@@ -4,7 +4,7 @@
   <div class="my-auto" id="projects-content">
     <h1 id="{{ urlize .Title }}">{{ .Title }}</h1>
     <p>{{ .Content }}</p>
-    {{ range .Data.Pages.ByWeight }}
+    {{ range .Data.Pages.ByWeight.Reverse }}
       {{ if ne .Type "markdown" }}
         {{ partial (printf "%s%s" .Type "Summary") . }}
       {{ end }}
@@ -12,7 +12,7 @@
     {{ range .Sections }}
         <h2 id="{{ urlize .Title }}"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
         <p>{{ .Content }}</p>
-        {{ range .Pages }}
+        {{ range .Pages.ByWeight.Reverse }}
           {{ if ne .Type "markdown" }}
             {{ partial (printf "%s%s" .Type "Summary") . }}
           {{ end }}
