@@ -4,19 +4,12 @@
       <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
       {{ .Content | replaceRE "<p>" "<p class=\"lead\">" | safeHTML  }}      
     </div>
-  
-    {{ $featuredPages := where .Pages "Params.featured" true }}
-    {{ range first 4 $featuredPages.ByWeight.Reverse }}
+
+    {{ range first 4 .Pages.ByWeight.Reverse }}
       {{ partial (printf "%s%s" .Section "Summary") . }}
     {{ end }}
-    {{ if ge $featuredPages.Len 5 }}
+    {{ if gt .Pages.Len 4 }}
       <h3><a href='{{ .RelPermalink }}'>Read more</a></h3>
     {{ end }}
   </div>
-  {{ if gt .Pages $featuredPages }}
-    <div class="my-auto">
-      <h3>Wait! There's more..</h3>
-      <p>See <a href="{{ .Permalink }}">all {{ .Title | pluralize }}</a> for more examples!</p>
-    </div>
-  {{ end }}
 </section>
