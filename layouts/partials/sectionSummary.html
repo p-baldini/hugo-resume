@@ -6,8 +6,11 @@
     </div>
   
     {{ $featuredPages := where .Pages "Params.featured" true }}
-    {{ range $featuredPages }}
+    {{ range first 4 $featuredPages.ByWeight.Reverse }}
       {{ partial (printf "%s%s" .Section "Summary") . }}
+    {{ end }}
+    {{ if ge $featuredPages.Len 5 }}
+      <h3><a href='{{ .RelPermalink }}'>Read more</a></h3>
     {{ end }}
   </div>
   {{ if gt .Pages $featuredPages }}
