@@ -1,13 +1,20 @@
 
 <div class="resume-item d-flex flex-column flex-md-row mb-3">
   <div class="publication-content mr-auto">
-    <h3 class="mb-0"><a href="{{ .Permalink }}">{{ .Params.title }}</a></h3>
-    <h4 class="mb-0">{{ .Params.authors }}. {{ .Params.year }}</h4>
-    <p>[{{ .Params.pub_type }}] {{ .Params.venue }}</p>
-    <p>{{ partial "techtags" . }}</p>
+    {{ if eq .Params.pub_type "Jour" }}
+      <h4 class="ps-1 pe-1 d-inline-flex rounded bg-danger-subtle">{{ .Params.pub_type }}</h4>
+    {{ else if eq .Params.pub_type "Conf" }}
+      <h4 class="ps-1 pe-1 d-inline-flex rounded bg-success-subtle">{{ .Params.pub_type }}</h4>
+    {{ else }}
+      <h4 class="ps-1 pe-1 d-inline-flex rounded bg-primary-subtle">{{ .Params.pub_type }}</h4>
+    {{ end }}
+    <h4 class="mb-0 d-inline-flex"><a href="{{ .Permalink }}">{{ .Params.title }}</a></h4>
+    <div></div>
+    <h4 class="mb-0 pe-2 d-inline-flex">{{ .Params.authors }}</h4>
+    <p class="fs-5 d-inline-flex"> {{ .Params.venue }}</p>
+    <!-- <p>{{ partial "techtags" . }}</p> -->
   </div>
-  <div class="resume-date text-md-right">
+  <div class="resume-date text-md-end">
     <span class="text-primary">{{ .Params.date | dateFormat "January 2006" }}</span>
-    <img src="{{ .Params.image }}" style="max-width:250px;padding:5px;"/>
   </div>
 </div>
