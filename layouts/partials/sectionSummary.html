@@ -1,14 +1,14 @@
 <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="{{ .Scratch.Get "sectionId" }}">
   <div class="my-auto" id="projects-content">
     <div class=" pb-2 pt-3">
-      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+      <h2 class="text-primary">{{ .Title }}</h2>
       {{ .Content | replaceRE "<p>" "<p class=\"lead\">" | safeHTML  }}      
     </div>
 
-    {{ range first 4 .Pages.ByWeight.Reverse }}
+    {{ range first 5 .Pages.ByWeight.Reverse }}
       {{ partial (printf "%s%s" .Section "Summary") . }}
     {{ end }}
-    {{ if gt .Pages.Len 4 }}
+    {{ if gt .Pages.Len 5 }}
       <h3><a href='{{ .RelPermalink }}'>READ MORE</a></h3>
     {{ end }}
   </div>
