@@ -1,0 +1,10 @@
+<div class="d-flex flex-column flex-md-row mb-3">
+  <div class="col-3 mr-auto">
+    <img src="{{ .Params.icon }}" class="me-3" width="60px">
+    <h2 class="d-inline-flex align-middle">{{ .Params.Title }}</h2>
+  </div>
+  <div class="col">
+    <h4 class="align-top">{{ .Params.school }}</h4>
+    {{ .Content }}
+  </div>
+</div>
