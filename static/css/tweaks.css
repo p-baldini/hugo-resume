@@ -19,11 +19,6 @@ img {
     margin: 0 auto;
 }
 
-.devicons{
-    font-size:1.5em;
-        vertical-align: sub;
-}
-
 /* ensure items with short summarues push date over image */
 .publication-content{
     width:90%;
@@ -118,29 +113,29 @@ div.skills-heading{
 .my-auto {
     width: 100%
 }
-    .advteaser-container{
+.advteaser-container{
 
-    }
+}
 
-    .advteaser {
-        width: 250px;
-        height: 250px;
-        position: relative;
-        display: inline-block;
-    }
-    .advteaser img {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-    .advteaser .img-top {
-        display: none;
-        z-index: 99;
-    }
-    .advteaser-container:hover .img-top {
-        display: inline;
-    }
+.advteaser {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    display: inline-block;
+}
+.advteaser img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.advteaser .img-top {
+    display: none;
+    z-index: 99;
+}
+.advteaser-container:hover .img-top {
+    display: inline;
+}
 
-    img.qrcode {
-        max-width: 300px !important;
-    }
+img.qrcode {
+    max-width: 300px !important;
+}
