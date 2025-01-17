@@ -154,3 +154,8 @@ a {
 a:hover, a:focus, a:active {
     color: #387DBD;
 }
+
+.small-caps {
+    text-transform: none;
+    font-variant: small-caps;
+}
