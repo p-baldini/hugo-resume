@@ -2,7 +2,7 @@
 {{ partial "breadcrumbs" . }}
 <section class="resume-section p-3 p-lg-5 d-flex d-column content">
   <div class="my-auto">
-    <h2 class="mb-0"><span class="text-primary">{{ .Title }}</span></h2>
+    <h2 class="mb-0 small-caps"><span class="text-primary">{{ .Title }}</span></h2>
 
     {{ if (isset .Params "alert_danger") }}
       <div class="alert alert-danger">{{ .Params.alert_danger }}</div>
@@ -14,15 +14,29 @@
 
     <h3>
       {{ if (isset .Params "article_link") }}
-         <a href="{{ .Params.article_link }}">Published version</a>
+        <a href="{{ .Params.article_link }}">
+          {{ if eq .Params.pub_type "Thesis" }}
+            Thesis link
+          {{ else }}
+            Article link
+          {{ end }}
+        </a>
       {{ end }}
 
       {{ if (isset .Params "article_pdf") }}
-       • <a href="{{ .Site.BaseURL }}{{ .Params.article_pdf }}">Pre-print version</a>
+        •
+        <a href="{{ .Site.BaseURL }}{{ .Params.article_pdf }}">
+          {{ if eq .Params.pub_type "Thesis" }}
+            Thesis PDF
+          {{ else }}
+            Article PDF
+          {{ end }}
+        </a>
        {{ end }}
 
       {{ if (isset .Params "slides_pdf") }}
-       • <a href="{{ .Site.BaseURL }}{{ .Params.slides_pdf }}">Slides</a>
+        •
+        <a href="{{ .Site.BaseURL }}{{ .Params.slides_pdf }}">Slides</a>
       {{ end }}
     </h3>
 
