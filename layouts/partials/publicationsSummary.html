@@ -5,6 +5,8 @@
       <h4 class="ps-1 pe-1 d-inline-flex rounded bg-danger-subtle">{{ .Params.pub_type }}</h4>
     {{ else if eq .Params.pub_type "Conf" }}
       <h4 class="ps-1 pe-1 d-inline-flex rounded bg-success-subtle">{{ .Params.pub_type }}</h4>
+    {{ else if eq .Params.pub_type "Pre-print" }}
+      <h4 class="ps-1 pe-1 d-inline-flex rounded bg-warning-subtle">{{ .Params.pub_type }}</h4>
     {{ else }}
       <h4 class="ps-1 pe-1 d-inline-flex rounded bg-primary-subtle">{{ .Params.pub_type }}</h4>
     {{ end }}
