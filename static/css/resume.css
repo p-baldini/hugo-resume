@@ -118,6 +118,13 @@ section.resume-section {
     padding-bottom: 5rem !important;
 }
 
+section.resume-section .resume-item a {
+    font-family: 'Saira Extra Condensed', serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    text-decoration: none;
+}
+
 section.resume-section .resume-item .resume-date {
     min-width: none;
 }
