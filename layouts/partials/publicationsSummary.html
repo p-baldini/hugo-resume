@@ -1,22 +1,23 @@
 
-<div class="resume-item d-flex flex-column flex-md-row mb-1">
-  <div class="publication-content mr-auto">
-    {{ if eq .Params.pub_type "Jour" }}
-      <h5 class="ps-1 pe-1 d-inline-flex rounded bg-danger-subtle">{{ .Params.pub_type }}</h5>
-    {{ else if eq .Params.pub_type "Conf" }}
-      <h5 class="ps-1 pe-1 d-inline-flex rounded bg-success-subtle">{{ .Params.pub_type }}</h5>
-    {{ else if or (eq .Params.pub_type "Pre-print") (eq .Params.pub_type "Poster") }}
-      <h5 class="ps-1 pe-1 d-inline-flex rounded bg-warning-subtle">{{ .Params.pub_type }}</h5>
-    {{ else }}
-      <h5 class="ps-1 pe-1 d-inline-flex rounded bg-primary-subtle">{{ .Params.pub_type }}</h5>
-    {{ end }}
-    <h5 class="mb-0 d-inline-flex"><a href="{{ .Permalink }}">{{ .Params.title }}</a></h5>
-    <div></div>
-    <h5 class="mb-0 pe-2 d-inline-flex">{{ .Params.authors }}</h5>
-    <p class="fs-6 d-inline-flex"> {{ .Params.venue }}</p>
+<div class="resume-item d-flex flex-column flex-md-row mb-3">
+  <div class="flex-grow-1 mb-1">
+    <h5 class="mb-0">
+      {{ if eq .Params.pub_type "Jour" }}
+        <h5 class="ps-1 pe-1 d-inline-flex rounded bg-danger-subtle">{{ .Params.pub_type }}</h5>
+      {{ else if eq .Params.pub_type "Conf" }}
+        <h5 class="ps-1 pe-1 d-inline-flex rounded bg-success-subtle">{{ .Params.pub_type }}</h5>
+      {{ else if or (eq .Params.pub_type "Pre-print") (eq .Params.pub_type "Poster") }}
+        <h5 class="ps-1 pe-1 d-inline-flex rounded bg-warning-subtle">{{ .Params.pub_type }}</h5>
+      {{ else }}
+        <h5 class="ps-1 pe-1 d-inline-flex rounded bg-primary-subtle">{{ .Params.pub_type }}</h5>
+      {{ end }}
+      <a href="{{ .Permalink }}">{{ .Params.title }}</a>
+    </h5>
+    <div></div><div class="d-lg-none mb-2"></div>
+    <h5 class="d-inline-flex mb-0">{{ .Params.authors }}</h5> — <p class="d-inline-flex fs-6 mb-0"> {{ .Params.venue }}</p>
     <!-- <p>{{ partial "techtags" . }}</p> -->
   </div>
-  <div class="resume-date text-md-end">
+  <div class="resume-date text-md-end mb-1">
     <span class="text-primary">{{ .Params.date | dateFormat "January 2006" }}</span>
   </div>
 </div>
