@@ -1,18 +1,18 @@
 
-<div class="resume-item d-flex flex-column flex-md-row mb-3">
+<div class="resume-item d-flex flex-column flex-md-row mb-1">
   <div class="publication-content mr-auto">
     {{ if eq .Params.pub_type "Jour" }}
-      <h4 class="ps-1 pe-1 d-inline-flex rounded bg-danger-subtle">{{ .Params.pub_type }}</h4>
+      <h5 class="ps-1 pe-1 d-inline-flex rounded bg-danger-subtle">{{ .Params.pub_type }}</h5>
     {{ else if eq .Params.pub_type "Conf" }}
-      <h4 class="ps-1 pe-1 d-inline-flex rounded bg-success-subtle">{{ .Params.pub_type }}</h4>
+      <h5 class="ps-1 pe-1 d-inline-flex rounded bg-success-subtle">{{ .Params.pub_type }}</h5>
     {{ else if or (eq .Params.pub_type "Pre-print") (eq .Params.pub_type "Poster") }}
-      <h4 class="ps-1 pe-1 d-inline-flex rounded bg-warning-subtle">{{ .Params.pub_type }}</h4>
+      <h5 class="ps-1 pe-1 d-inline-flex rounded bg-warning-subtle">{{ .Params.pub_type }}</h5>
     {{ else }}
-      <h4 class="ps-1 pe-1 d-inline-flex rounded bg-primary-subtle">{{ .Params.pub_type }}</h4>
+      <h5 class="ps-1 pe-1 d-inline-flex rounded bg-primary-subtle">{{ .Params.pub_type }}</h5>
     {{ end }}
-    <h4 class="mb-0 d-inline-flex"><a href="{{ .Permalink }}">{{ .Params.title }}</a></h4>
+    <h5 class="mb-0 d-inline-flex"><a href="{{ .Permalink }}">{{ .Params.title }}</a></h5>
     <div></div>
-    <h5 class="mb-0 pe-2 d-inline-flex">{{ .Params.authors }}</h4>
+    <h5 class="mb-0 pe-2 d-inline-flex">{{ .Params.authors }}</h5>
     <p class="fs-6 d-inline-flex"> {{ .Params.venue }}</p>
     <!-- <p>{{ partial "techtags" . }}</p> -->
   </div>
