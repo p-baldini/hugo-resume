@@ -1,0 +1,7 @@
+:root {
+    /* colors */
+    --primary-color:    #387DBD;
+    --secondary-color:  #868e96;
+    --tertiary-color:   #a5c4e1;
+    --margin-color:     rgba(255, 255, 255, 0.4);
+}

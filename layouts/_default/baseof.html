@@ -26,12 +26,8 @@
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous"></noscript>
   <!-- Custom styles for this template -->
-  <link rel="preload" href="{{ "css/resume.css" | absURL }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ "css/resume.css" | absURL }}"></noscript>
-  <link rel="preload" href="{{ "css/tweaks.css" | absURL }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ "css/tweaks.css" | absURL }}"></noscript>
-  <link rel="preload" href="{{ "css/resume-override.css" | absURL }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ "css/resume-override.css" | absURL }}"></noscript>
+  <link rel="preload" href="{{ "css/main.css" | absURL }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ "css/main.css" | absURL }}"></noscript>
   {{ hugo.Generator }}
   {{ block "headfiles" . }}
    <!-- pl;aceholder -->
@@ -50,9 +46,6 @@
   <!-- Bootstrap core JavaScript -->
   <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <!-- Polyfill for Smooth Scrolling -->
-  <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js" integrity="sha384-EYn4rWu1DHvYD0sSSSbMEtXQmMl58CFJd897806+RT1jJVYbhuZlZMN6yG9nCyFa" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/smoothscroll-anchor-polyfill@1.3.2/dist/index.min.js" integrity="sha384-EY9NBEHCFbZANmPcTm7CgG8OhsFILy0VBLG85pF6OIpP42NVbZVNsFOc23PYTCkB" crossorigin="anonymous"></script>
   <!-- Custom scripts for this template -->
   <script async src="/js/resume.js"></script>
   {{ if .Site.Params.google.analytics.trackerID }}
