@@ -4,14 +4,17 @@ section.resume-section {
     flex-direction:     column;
     border-bottom:      1px solid #dee2e6;
     min-height:         100vh;
+    justify-content:    center;
 
     /* positioning */
     @media (max-width:  1000px) {
-        padding:        1.75rem 1.5rem !important;
+        padding:        0 1.5rem !important;
     }
     @media (min-width:  1000px) {
-        padding:        5rem 3rem !important;
+        padding:        0 3rem !important;
     }
+
+    padding: auto; /* TODO */
 }
 
 .resume-item {

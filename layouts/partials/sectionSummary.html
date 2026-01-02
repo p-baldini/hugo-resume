@@ -1,12 +1,10 @@
 <section class="resume-section" id="{{ .Scratch.Get "sectionId" }}">
-  <h2 class="pb-2 pt-3 text-primary">{{ .Title }}</h2>
-  <div class="fs-6 mb-3">{{ .Content }}</div>
-  <div class="d-flex flex-column flex-grow-1 justify-content-evenly">
-    {{ range first 5 .Pages.ByWeight.Reverse }}
-      {{ partial (printf "%s%s" .Section "Summary") . }}
-    {{ end }}
-    {{ if gt .Pages.Len 5 }}
-      <a class="fs-5" href='{{ .RelPermalink }}'>READ MORE</a>
-    {{ end }}
-  </div>
+  <h2>{{ .Title }}</h2>
+  <par>{{ .Content }}</par>
+  {{ range first 5 .Pages.ByWeight.Reverse }}
+    {{ partial (printf "%s%s" .Section "Summary") . }}
+  {{ end }}
+  {{ if gt .Pages.Len 5 }}
+    <a class="fs-5" href='{{ .RelPermalink }}'>READ MORE</a>
+  {{ end }}
 </section>
