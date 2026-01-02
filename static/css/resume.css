@@ -1,102 +1,65 @@
-html {
-    --scroll-behavior: smooth;
-    scroll-behavior: smooth;
-}
+section.resume-section {
+    /* style */
+    display:            flex;
+    flex-direction:     column;
+    border-bottom:      1px solid #dee2e6;
+    min-height:         100vh;
 
-body {
-    font-family: 'Open Sans', serif;
-    padding-top: 54px;
-    color: var(--secondary-color);
-}
-
-@media (min-width: 992px) {
-    body {
-        padding-top: 0;
-        padding-left: 17rem;
+    /* positioning */
+    @media (max-width:  1000px) {
+        padding:        1.75rem 1.5rem !important;
+    }
+    @media (min-width:  1000px) {
+        padding:        5rem 3rem !important;
     }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Saira Extra Condensed', serif;
-    font-weight: 700;
-    color: #343a40;
+.resume-item {
+    display:            flex;
+    @media (max-width:  1000px) {
+        flex-direction: column;
+
+        margin-bottom:  1.25rem;
+    }
+    @media (min-width:  1000px) {
+        flex-direction: row;
+
+        margin-bottom:  1.25rem;
+    }
 }
 
-h1, h2{
-    text-transform: uppercase;
+.resume-date {
+    @media (max-width:  768px) {
+        min-width:      none;
+    }
+    @media (min-width:  768px) {
+        min-width:      10rem;
+    }
 }
 
-h1 {
-    font-size: 6rem;
-    line-height: 5.5rem;
-}
-
-h2 {
-    font-size: 3.5rem;
-}
-
-.subheading {
-    text-transform: uppercase;
-    font-weight: 500;
-    font-family: 'Saira Extra Condensed', serif;
-    font-size: 1.35rem;
-}
-
-.list-social-icons a {
-    color: #495057;
-}
-
-.list-social-icons a:hover {
-    color: var(--primary-color);
-}
-
-.list-social-icons a .fa-lg {
-    font-size: 1.75rem;
-}
-
-.list-icons {
-    font-size: 3rem;
-}
-
-.list-icons .list-inline-item i:hover {
-    color: var(--primary-color);
-}
-
-section.resume-section {
-    border-bottom: 1px solid #dee2e6;
-    padding-top: 5rem !important;
-    padding-bottom: 5rem !important;
-}
-
-section.resume-section .resume-item a {
+.entry-type {
     font-family: 'Saira Extra Condensed', serif;
     font-weight: 700;
     font-size: 1.35rem;
     text-decoration: none;
-}
 
-section.resume-section .resume-item .resume-date {
-    min-width: none;
-}
-
-@media (min-width: 768px) {
-    section.resume-section {
-        min-height: 100vh;
+    display:                inline-flex;
+    div {
+        margin-right:       5px;
+        padding:            0px 3px 0px 3px;
+        border-radius:      3px;
     }
-    section.resume-section .resume-item .resume-date {
-        min-width: 10rem;
+    .jour {
+        background-color:   #f8d7da;
     }
-}
-
-@media (min-width: 992px) {
-    section.resume-section {
-        padding-top: 3rem !important;
-        padding-bottom: 3rem !important;
+    .conf {
+        background-color:   #d1e7dd;
+    }
+    .prep {
+        background-color:   #fef3cd;
+    }
+    .thes {
+        background-color:   #cfe2ff;
     }
 }
 
