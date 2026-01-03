@@ -1,14 +1,11 @@
 {{ define "main" }}
 <!-- this is displayed for a specific tag, and will link content related -->
 <section class="resume-section">
-  <div class="my-auto">
-
+  <div>
   Content tagged with  <span class="tag">{{ .Data.Term }}</span>
     <ul>
       {{ range .Data.Pages }}
-          <li>
-             <a href="{{.Permalink}}">{{.Title}}</a>
-         </li>
+        <li><a href="{{.Permalink}}">{{.Title}}</a></li>
       {{ end }}
     </ul>
   </div>

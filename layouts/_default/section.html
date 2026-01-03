@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ partial "breadcrumbs" . }}
 <section class="resume-section">
-  <div class="my-auto" id="projects-content">
+  <div id="projects-content">
     <h2 class="text-primary" id="{{ urlize .Title }}">{{ .Title }}</h2>
     <p>{{ .Content }}</p>
     {{ range .Data.Pages.ByWeight.Reverse }}

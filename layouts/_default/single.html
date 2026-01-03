@@ -1,7 +1,7 @@
 {{ define "main" }}
 <section class="resume-section" id="{{ replace .Title " " "-" }}">
-  <div class="my-auto">
-    <h1 class="mb-0"><span class="text-primary">{{ .Title }}</span></h1>
+  <div>
+    <h1 class="text-primary">{{ .Title }}</h1>
     {{ .Content }}
   </div>
 </section>

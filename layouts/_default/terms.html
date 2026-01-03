@@ -1,14 +1,12 @@
 {{ define "main" }}
 <section class="resume-section">
-  <div class="my-auto" id="projects-content">
+  <div id="projects-content">
 <!-- this is used as the index for any taxonomy, ie /tags/ -->
-  <ul>
-    {{ range .Data.Pages }}
-        <li>
-           <a href="{{.Permalink}}">{{.Title}}</a>
-       </li>
-    {{ end }}
-  </ul>
+    <ul>
+      {{ range .Data.Pages }}
+        <li><a href="{{.Permalink}}">{{.Title}}</a></li>
+      {{ end }}
+    </ul>
   </div>
-  </section>
+</section>
 {{ end }}
