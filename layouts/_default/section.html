@@ -2,7 +2,7 @@
 {{ partial "breadcrumbs" . }}
 <section class="resume-section">
   <div id="projects-content">
-    <h2 class="text-primary" id="{{ urlize .Title }}">{{ .Title }}</h2>
+    <h2 id="{{ urlize .Title }}">{{ .Title }}</h2>
     <p>{{ .Content }}</p>
     {{ range .Data.Pages.ByWeight.Reverse }}
       {{ if ne .Type "markdown" }}
