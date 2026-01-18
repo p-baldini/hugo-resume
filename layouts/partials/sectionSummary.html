@@ -1,4 +1,4 @@
-<section class="resume-section" id="{{ .Scratch.Get "sectionId" }}">
+<section id="{{ .Scratch.Get "sectionId" }}">
   <h2>{{ .Title }}</h2>
   <par>{{ .Content }}</par>
   {{ range first 5 .Pages.ByWeight.Reverse }}
