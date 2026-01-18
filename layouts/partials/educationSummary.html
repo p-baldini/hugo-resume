@@ -1,10 +1,12 @@
-<div class="d-flex">
-  <h4 class="col-2 mb-0">
-    <img src="{{ .Params.icon }}" class="me-3" width="30px">
-    {{ .Params.Country }}
-  </h4>
-  <div>
-    <h4>{{ .Params.school }}</h4>
-    <div>{{ .Content }}</div>
+<div class="resume-item">
+  <div class="columns">
+    <h4>
+      <img src="{{ .Params.icon }}" class="me-3" width="30px">
+      {{ .Params.Country }}
+    </h4>
+    <div>
+      <h4>{{ .Params.school }}</h4>
+      <div>{{ .Content }}</div>
+    </div>
   </div>
 </div>
