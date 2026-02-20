@@ -13,30 +13,16 @@
     {{ end }}
 
     <h3>
-      {{ if (isset .Params "article_link") }}
-        <a href="{{ .Params.article_link }}">
-          {{ if eq .Params.pub_type "Thesis" }}
-            Thesis link
-          {{ else }}
-            Article link
-          {{ end }}
-        </a>
+      {{ if (isset .Params "publication_link") }}
+        <a href="{{ .Params.publication_link }}">Online version</a>
       {{ end }}
 
-      {{ if (isset .Params "article_pdf") }}
-        •
-        <a href="{{ .Site.BaseURL }}{{ .Params.article_pdf }}">
-          {{ if eq .Params.pub_type "Thesis" }}
-            Thesis PDF
-          {{ else }}
-            Article PDF
-          {{ end }}
-        </a>
-       {{ end }}
+      {{ if (isset .Params "manuscript_link") }}
+        • <a href="{{ .Site.BaseURL }}{{ .Params.manuscript_link }}">Manuscript</a>
+      {{ end }}
 
-      {{ if (isset .Params "slides_pdf") }}
-        •
-        <a href="{{ .Site.BaseURL }}{{ .Params.slides_pdf }}">Slides</a>
+      {{ if (isset .Params "slides_link") }}
+        • <a href="{{ .Site.BaseURL }}{{ .Params.slides_link }}">Slides</a>
       {{ end }}
     </h3>
 

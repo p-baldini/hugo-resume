@@ -3,14 +3,14 @@
   <div class="flex-grow-1 mb-1">
     <h3>
       <div class="entry-type">
-        {{ if eq .Params.pub_type "Jour" }}
-          <div class="jour">{{ .Params.pub_type }}</div>
-        {{ else if eq .Params.pub_type "Conf" }}
-          <div class="conf">{{ .Params.pub_type }}</div>
-        {{ else if or (eq .Params.pub_type "Pre-print") (eq .Params.pub_type "Poster") }}
-          <div class="prep">{{ .Params.pub_type }}</div>
+        {{ if eq .Params.class "Jour" }}
+          <div class="jour">{{ .Params.class }}</div>
+        {{ else if eq .Params.class "Conf" }}
+          <div class="conf">{{ .Params.class }}</div>
+        {{ else if or (eq .Params.class "Pre-print") (eq .Params.class "Poster") }}
+          <div class="prep">{{ .Params.class }}</div>
         {{ else }}
-          <div class="thes">{{ .Params.pub_type }}</div>
+          <div class="thes">{{ .Params.class }}</div>
         {{ end }}
       </div>
       <a href="{{ .Permalink }}">{{ .Params.title }}</a>
