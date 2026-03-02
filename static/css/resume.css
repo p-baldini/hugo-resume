@@ -1,50 +1,59 @@
 section {
     /* style */
-    display:            flex;
-    flex-direction:     column;
-    border-bottom:      1px solid #dee2e6;
-    min-height:         100vh;
-    justify-content:    center;
+    display:                flex;
+    flex-direction:         column;
+    border-bottom:          1px solid #dee2e6;
+    min-height:             100vh;
+    justify-content:        center;
 
     /* positioning */
-    @media (max-width:  1000px) {
-        padding:        0 1.5rem !important;
+    @media (max-width: 1000px) {
+        padding:            0 1.5rem !important;
     }
-    @media (min-width:  1000px) {
-        padding:        0 3rem !important;
+    @media (min-width: 1000px) {
+        padding:            0 3rem !important;
     }
 
-    padding: auto; /* TODO */
+    padding:                auto; /* TODO */
 }
 
 .resume-item {
-    display:            flex;
-    @media (max-width:  1000px) {
-        flex-direction: column;
+    display:                flex;
+    @media (max-width: 1000px) {
+        flex-direction:     column;
 
-        margin-bottom:  1.25rem;
+        margin-bottom:      1.25rem;
     }
-    @media (min-width:  1000px) {
-        flex-direction: row;
+    @media (min-width: 1000px) {
+        flex-direction:     row;
 
-        margin-bottom:  1.25rem;
+        margin-bottom:      1.25rem;
     }
 }
 
+.resume-item-publication {
+    flex-grow:              1;
+    margin-bottom:          0.25em;
+}
+
 .resume-date {
-    @media (max-width:  768px) {
-        min-width:      none;
+    margin-bottom:          0.25em;
+
+    @media (max-width: 768px) {
+        min-width:          none;
     }
-    @media (min-width:  768px) {
-        min-width:      10rem;
+    @media (min-width: 768px) {
+        min-width:          10rem;
+        text-align:         end;
+        padding-top:        7px;
     }
 }
 
 .entry-type {
-    font-family: 'Saira Extra Condensed', serif;
-    font-weight: 700;
-    font-size: 1.35rem;
-    text-decoration: none;
+    font-family:            'Saira Extra Condensed', serif;
+    font-weight:            700;
+    font-size:              1.35rem;
+    text-decoration:        none;
 
     display:                inline-flex;
     div {
@@ -80,22 +89,22 @@ section {
 }
 
 .bg-primary {
-    background-color: var(--primary-color) !important;
+    background-color:       var(--primary-color) !important;
 }
 
 .text-primary {
-    color: var(--primary-color) !important;
+    color:                  var(--primary-color) !important;
 }
 
 a {
-    color: var(--primary-color) ;
+    color:                  var(--primary-color) ;
 }
 
 a:hover, a:focus, a:active {
-    color: var(--primary-color) ;
+    color:                  var(--primary-color) ;
 }
 
 .small-caps {
-    text-transform: none;
-    font-variant: small-caps;
+    text-transform:         none;
+    font-variant:           small-caps;
 }
