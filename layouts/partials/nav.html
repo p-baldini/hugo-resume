@@ -1,15 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
   <a class="navbar-brand" href="#page-top">
-    <span class="d-none d-lg-block">
-      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ .Site.BaseURL }}{{ .Site.Params.profileImage | relURL }}" alt="Picture of Paolo Baldini" width="150" height="150">
+    <span>
+      <img class="img-profile" src="{{ .Site.BaseURL }}{{ .Site.Params.profileImage | relURL }}" alt="Picture of Paolo Baldini" width="150" height="150">
     </span>
     <div></div>
-    <span class="d-block d-lg-none">{{ .Site.Params.firstName }} {{ .Site.Params.lastName }}</span>
+    <span class="name">
+      {{ .Site.Params.firstName }} {{ .Site.Params.lastName }}
+    </span>
+    <button id="nav-toggler"  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars"></i>
+    </button>
   </a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="{{ "#about" | relURL }}">{{ i18n "about" }}</a>
