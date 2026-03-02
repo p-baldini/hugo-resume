@@ -49,6 +49,15 @@ section {
     }
 }
 
+.country {
+    display: flex;
+    flex-direction: row;
+    h4 {
+        margin-left:            1em;
+        margin-top:             2px;
+    }
+}
+
 .entry-type {
     font-family:            'Saira Extra Condensed', serif;
     font-weight:            700;

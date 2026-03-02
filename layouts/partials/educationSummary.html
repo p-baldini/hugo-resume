@@ -1,9 +1,9 @@
 <div class="resume-item">
   <div class="columns">
-    <h4>
-      <img src="{{ .Params.icon }}" class="me-3" width="30px">
-      {{ .Params.Country }}
-    </h4>
+    <div class="country">
+      <img src="{{ .Params.icon }}" class="me-3" width="30px" height="30px">
+      <h4>{{ .Params.Country }}</h4>
+    </div>
     <div>
       <h4>{{ .Params.school }}</h4>
       <div>{{ .Content }}</div>

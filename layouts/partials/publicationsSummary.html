@@ -1,6 +1,6 @@
 
 <div class="resume-item">
-  <div class="flex-grow-1 mb-1">
+  <div class="resume-item-publication">
     <h3>
       <div class="entry-type">
         {{ if eq .Params.class "Jour" }}
@@ -19,7 +19,7 @@
     &nbsp;—&nbsp;
     {{ .Params.venue }}</div>
   </div>
-  <div class="resume-date text-md-end mb-1">
+  <div class="resume-date">
     <span class="text-primary">{{ .Params.date | dateFormat "January 2006" }}</span>
   </div>
 </div>

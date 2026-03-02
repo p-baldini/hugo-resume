@@ -5,6 +5,6 @@
     {{ partial (printf "%s%s" .Section "Summary") . }}
   {{ end }}
   {{ if gt .Pages.Len 5 }}
-    <a class="fs-5" href='{{ .RelPermalink }}'>READ MORE</a>
+    <a href='{{ .RelPermalink }}'>READ MORE</a>
   {{ end }}
 </section>
