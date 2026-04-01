@@ -4,12 +4,10 @@ html {
 }
 
 body {
-    /* positioning */
-    padding-top:        54px;
-
     /* font style */
     font-family:        'Open Sans', serif;
     color:              var(--secondary-color);
+    margin:             0;
 
     /* size dependant settings */
     @media (min-width: 1000px) {
