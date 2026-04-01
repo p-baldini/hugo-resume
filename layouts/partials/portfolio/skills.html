@@ -1,8 +1,8 @@
 <section id="skills">
   <div id="skills-content">
-  <h2 class="mb-5">{{ i18n "skills" }}</h2>
+  <h2>{{ i18n "skills" }}</h2>
     {{ range $.Site.Data.skills }}
-      <div class="subheading mb-3 skills-heading">{{ .grouping }}</div>
+      <div class="subheading skills-heading">{{ .grouping }}</div>
       <ul>
         {{ range .skills }}
           {{ if isset . "name" }}

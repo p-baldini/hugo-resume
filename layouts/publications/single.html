@@ -2,7 +2,7 @@
 {{ partial "breadcrumbs" . }}
 <section class="content">
   <div>
-    <h2 class="mb-0 small-caps"><span class="text-primary">{{ .Title }}</span></h2>
+    <h2 class="small-caps text-primary">{{ .Title }}</h2>
 
     {{ if (isset .Params "alert_danger") }}
       <div class="alert alert-danger">{{ .Params.alert_danger }}</div>
@@ -29,7 +29,7 @@
     {{ with .Params.image }}<img src="{{ . }}" style="max-height:300px;max-width:30%;" align="right"/>{{ end }}
     {{ .Content }}
 
-    <p class="mt-3">{{ partial "techtags" . }}</p>
+    <p>{{ partial "techtags" . }}</p>
   </div>
 </section>
 {{ end }}
