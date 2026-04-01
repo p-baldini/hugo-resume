@@ -41,6 +41,7 @@ h1 {
 h2 {
     /* font style */
     font-size:          3.5rem;
+    line-height:        1em;
 }
 
 h3 {
