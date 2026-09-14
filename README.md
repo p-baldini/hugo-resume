@@ -12,6 +12,7 @@ This is basically a single-page website with auto-scrolling based on left-hand n
     - [Data files](#data-files)
     - [Projects](#projects)
     - [Publications](#publications)
+    - [Contributions](#contributions)
     - [Blog / Posts](#blog--posts)
     - [Template params](#template-params)
     - [Internationalization](#internationalization)
@@ -60,6 +61,10 @@ Projects are added to one of 2 subfolders of `creations` or `contributions`. The
 
 ### Publications
 Similar to projects, create them under `publications`. Include any papers, speaking engagements, articles, etc.
+
+### Contributions
+
+Similar to projects, create them under `contributions`. Include any contribution to public projects.
 
 ### Blog / Posts
 Similar to posts, create them under `blog`. Include any thoughts, musiings, etc.
