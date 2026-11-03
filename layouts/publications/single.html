@@ -1,34 +1,65 @@
 {{ define "main" }}
+{{ $publication := partialCached "publicationData.html" . .RelPermalink }}
 <section class="content">
-  <div>
-    <h2 class="small-caps text-primary">{{ .Title }}</h2>
+    <div>
+        <h2 class="small-caps text-primary">{{ .Title }}</h2>
 
-    {{ if (isset .Params "alert_danger") }}
-      <div class="alert alert-danger">{{ .Params.alert_danger }}</div>
-    {{ end }}
+        <p>
+            {{ .Params.authors }}
+            <br>
+            {{ with .Params.venue_link }}
+                <a href="{{ . }}">{{ $.Params.venue }}</a>
+            {{ else }}
+                {{ .Params.venue }}
+            {{ end }} ·
+            {{ .Date | dateFormat "January 2006" }}
+            {{ with $publication.doi }} ·
+                DOI: <a href="https://doi.org/{{ . }}">{{ . }}</a>
+            {{ end }}
+            {{- with $publication.pdf }} ·
+                <a href="{{ . }}"><i class="fa-light fa-file-pdf"></i> PDF</a>
+            {{ end }}
+            {{- with .Params.slides_link }} ·
+                <a href="{{ . | absURL }}">SLIDES</a>
+            {{ end -}}
+        </p>
 
-    {{ if (isset .Params "alert_info") }}
-      <div class="alert alert-info">{{ .Params.alert_info }}</div>
-    {{ end }}
+        {{ if (isset .Params "alert_danger") }}
+            <div class="alert alert-danger">{{ .Params.alert_danger }}</div>
+        {{ end }}
 
-    <h3>
-      {{ if (isset .Params "publication_link") }}
-        <a href="{{ .Params.publication_link }}">Online version</a>
-      {{ end }}
+        {{ if (isset .Params "alert_info") }}
+            <div class="alert alert-info">{{ .Params.alert_info }}</div>
+        {{ end }}
 
-      {{ if (isset .Params "manuscript_link") }}
-        • <a href="{{ .Site.BaseURL }}{{ .Params.manuscript_link }}">Manuscript</a>
-      {{ end }}
+        {{ with .Params.image }}<img src="{{ . }}" style="max-height:300px;max-width:30%;" align="right"/>{{ end }}
+        {{ .Content }}
 
-      {{ if (isset .Params "slides_link") }}
-        • <a href="{{ .Site.BaseURL }}{{ .Params.slides_link }}">Slides</a>
-      {{ end }}
-    </h3>
+        <!--
+        The full text, when the site provides it (see publicationData.html), collapsed below the abstract: it
+        starts from its first section, as the abstract is the one above, with its headings one level below the
+        title of the page. Its math is left to MathJax (_markup/render-passthrough.html, footerfiles below)
+        -->
+        {{ with $publication.fulltext }}
+        {{ $text := replaceRE `(?s)\A\s*## Abstract\n.*?\n(## )` "$1" .Content 1 }}
+        {{ $text = replaceRE `(?m)^(#+) ` "#$1 " $text }}
+        <details class="fulltext">
+            <summary>Full text</summary>
+            {{ $.RenderString (dict "display" "block") $text }}
+        </details>
+        {{ end }}
 
-    {{ with .Params.image }}<img src="{{ . }}" style="max-height:300px;max-width:30%;" align="right"/>{{ end }}
-    {{ .Content }}
-
-    <p>{{ partial "techtags" . }}</p>
-  </div>
+        <p>{{ partial "techtags" . }}</p>
+    </div>
 </section>
+{{ end }}
+
+<!-- Loads MathJax so LaTeX formulas render, but only on publication pages that have a full text -->
+{{ define "footerfiles" }}
+    {{ with (partialCached "publicationData.html" . .RelPermalink).fulltext }}
+        <script>
+            MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };
+        </script>
+        <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+    {{ end }}
 {{ end }}

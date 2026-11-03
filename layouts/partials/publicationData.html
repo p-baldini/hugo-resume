@@ -1,0 +1,65 @@
+<!--
+Normalises the front matter and the BibTeX block of a publication page, for the page itself
+and for the templates describing it to search engines and LLMs (seo/*, llms/*).
+
+Returns a dict with:
+    authors   the actual authors, without the supervisors listed by theses
+    url       the online version (publication_link), when it is a real link
+    doi       the DOI, when url is a doi.org link
+    pdf       the manuscript, published in the folder of the page as Google Scholar requires
+    abstract  the abstract, as plain text
+    bib       the volume, number, pages, publisher and school found in the BibTeX block
+    bibtex    the BibTeX block itself
+    fulltext  the full text of the publication in Markdown, from its abstract on, when the site provides
+                        it in assets/fulltext/<file name of the publication>.md
+
+The manuscript must be reachable as an asset: a site keeping its PDFs in static/media can mount
+that folder also on assets/media through module.mounts. Without it, the page links no manuscript.
+-->
+
+{{- $authors := slice -}}
+{{- with .Params.authors -}}
+    <!-- Theses list their supervisors after the author: "Author. Supervisor: ..." -->
+    {{- range split (index (split . ". Supervisor") 0) ", " -}}
+        {{- $authors = $authors | append (strings.TrimSpace .) -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $url := "" -}}
+{{- $doi := "" -}}
+{{- with .Params.publication_link -}}
+    {{- if hasPrefix . "http" -}}
+        {{- $url = . -}}
+        {{- if hasPrefix . "https://doi.org/" }}{{ $doi = strings.TrimPrefix "https://doi.org/" . }}{{ end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $pdf := "" -}}
+{{- with .Params.manuscript_link -}}
+    {{- $name := path.Base . -}}
+    {{- with resources.Get . -}}
+        {{- $pdf = (resources.Copy (path.Join $.RelPermalink $name) .).Permalink -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $abstract := index (split .RawContent "```") 0 -}}
+{{- $abstract = replaceRE `(?m)^#+\s*(Abstract|Description)\s*$` "" $abstract -}}
+{{- $abstract = $abstract | markdownify | plainify | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace -}}
+
+{{- $bib := dict -}}
+{{- range $field := slice "volume" "number" "pages" "publisher" "school" -}}
+    {{- with findRESubmatch (printf `(?m)^\s*%s\s*=\s*\{([^}]*)\}` $field) $.RawContent 1 -}}
+        {{- with strings.TrimSpace (index (index . 0) 1) -}}
+            {{- $bib = merge $bib (dict $field .) -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $bibtex := "" -}}
+{{- with findRESubmatch "(?s)```[a-z]*\\n(.*?)```" .RawContent 1 -}}
+    {{- $bibtex = strings.TrimSpace (index (index . 0) 1) -}}
+{{- end -}}
+
+{{- $fulltext := resources.Get (printf "fulltext/%s.md" .File.ContentBaseName) -}}
+
+{{- return dict "authors" $authors "url" $url "doi" $doi "pdf" $pdf "abstract" $abstract "bib" $bib "bibtex" $bibtex "fulltext" $fulltext -}}
