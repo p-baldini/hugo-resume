@@ -17,7 +17,7 @@
                 DOI: <a href="https://doi.org/{{ . }}">{{ . }}</a>
             {{ end }}
             {{- with $publication.pdf }} ·
-                <a href="{{ . }}"><i class="fa-light fa-file-pdf"></i> PDF</a>
+                <a href="{{ . }}"><i class="fa-solid fa-file-pdf"></i>PDF</a>
             {{ end }}
             {{- with .Params.slides_link }} ·
                 <a href="{{ . | absURL }}">SLIDES</a>
