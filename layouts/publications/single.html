@@ -54,8 +54,8 @@
 </section>
 {{ end }}
 
-<!-- Loads MathJax so LaTeX formulas render, but only on publication pages that have a full text -->
 {{ define "footerfiles" }}
+    <!-- Loads MathJax so LaTeX formulas render, but only on publication pages that have a full text -->
     {{ with (partialCached "publicationData.html" . .RelPermalink).fulltext }}
         <script>
             MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };

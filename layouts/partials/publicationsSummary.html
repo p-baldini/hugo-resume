@@ -1,25 +1,25 @@
-
+<!-- Entry type for publication in the list -->
 <div class="resume-item">
-  <div class="resume-item-publication">
-    <h3>
-      <div class="entry-type">
-        {{ if eq .Params.class "Jour" }}
-          <div class="jour">{{ .Params.class }}</div>
-        {{ else if eq .Params.class "Conf" }}
-          <div class="conf">{{ .Params.class }}</div>
-        {{ else if or (eq .Params.class "Pre-print") (eq .Params.class "Poster") }}
-          <div class="prep">{{ .Params.class }}</div>
-        {{ else }}
-          <div class="thes">{{ .Params.class }}</div>
-        {{ end }}
-      </div>
-      <a href="{{ .Permalink }}">{{ .Params.title }}</a>
-    </h3>
-    <div>{{ .Params.authors }}
-    &nbsp;—&nbsp;
-    {{ .Params.venue }}</div>
-  </div>
-  <div class="resume-date">
-    <span class="text-primary">{{ .Params.date | dateFormat "January 2006" }}</span>
-  </div>
+    <div class="resume-item-publication">
+        <div class="entry-type">
+            {{ if eq .Params.class "jour" }}
+                <div class="jour">{{ .Params.class }}</div>
+            {{ else if eq .Params.class "conf" }}
+                <div class="conf">{{ .Params.class }}</div>
+            {{ else if or (eq .Params.class "pre-print") (eq .Params.class "poster") }}
+                <div class="prep">{{ .Params.class }}</div>
+            {{ else }}
+                <div class="thes">{{ .Params.class }}</div>
+            {{ end }}
+        </div>
+        <a class="entry-title" href="{{ .Permalink }}">{{ .Params.title }} <i class="fa-regular fa-link"></i></a>
+        <div>
+            {{ .Params.authors }}
+            &nbsp;—&nbsp;
+            {{ .Params.venue }}
+        </div>
+    </div>
+    <div class="resume-date">
+        <span class="text-primary">{{ .Params.date | dateFormat "January 2006" }}</span>
+    </div>
 </div>

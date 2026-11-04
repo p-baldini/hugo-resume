@@ -58,11 +58,13 @@ section {
     }
 }
 
-.entry-type {
+.entry-type, .entry-title {
     font-family:            'Saira Extra Condensed', serif;
     font-weight:            700;
-    font-size:              1.35rem;
+    font-size:              1.6rem;
     text-decoration:        none;
+    font-variant:           small-caps;
+    font-size-adjust:       cap-height 0.55;
 
     display:                inline-flex;
     div {
@@ -82,6 +84,11 @@ section {
     .thes {
         background-color:   #cfe2ff;
     }
+}
+
+.entry-type {
+    /* text-transform:         uppercase; */
+    color:                  var(--secondary-color);
 }
 
 .columns {
