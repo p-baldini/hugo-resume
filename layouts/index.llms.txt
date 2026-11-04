@@ -1,0 +1,29 @@
+{{ partial "llms/intro.txt" . | strings.TrimSpace }}
+{{- with .OutputFormats.Get "llmsfull" }}
+
+This summary, with the full text of the publications that provide it, is also available as a single file: {{ .Permalink }}
+{{- end }}
+
+{{- range partial "llms/publications.html" . }}
+
+## {{ .title }}
+{{ range .pages }}
+{{- $publication := partialCached "publicationData.html" . .RelPermalink }}
+{{- /* Each publication links its Markdown version (publications/single.markdown.md), when it has one */}}
+{{- $markdown := .OutputFormats.Get "markdown" }}
+- [{{ .Title }}]({{ with $markdown }}{{ .Permalink }}{{ else }}{{ .Permalink }}{{ end }}): {{ .Params.authors }}. {{ .Params.venue }}, {{ .Date | dateFormat "January 2006" }}.
+    {{- with $publication.doi }} DOI: {{ . }}.{{ end }}
+    {{- if $markdown }} Web page: {{ .Permalink }}.{{ end }}
+    {{- with $publication.pdf }} PDF: {{ . }}.{{ end }}
+    {{- if and $markdown $publication.fulltext }} Full text included.{{ end }}
+    {{- with $publication.abstract }} Abstract: {{ . }}{{ end }}
+{{- end }}
+{{- end }}
+
+{{- with where site.RegularPages "Section" "contributions" }}
+
+## Software contributions
+{{ range . }}
+- [{{ .Title }}]({{ .Permalink }}): {{ .Params.short_description }} ({{ .Params.community }}).
+{{- end }}
+{{- end }}

@@ -1,0 +1,5 @@
+<!--
+Math kept as written by Goldmark's passthrough extension, which a site enables for $...$ and $$...$$:
+it is given to MathJax with the delimiters it looks for (see publications/single.html)
+-->
+{{- if eq .Type "block" }}\[{{ .Inner }}\]{{ else }}\({{ .Inner }}\){{ end -}}

@@ -97,3 +97,33 @@ section blockquote {
     border-left: 4px solid #BD5D38;
     /* padding-left: 1em; */
 }
+
+/* Full text of a publication, collapsed below its abstract (publications/single.html) */
+details.fulltext {
+    margin: 2em 0;
+}
+
+details.fulltext > summary {
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+details.fulltext table {
+    display: block;
+    overflow-x: auto;
+    margin: 1em 0;
+    border-collapse: collapse;
+}
+
+details.fulltext th,
+details.fulltext td {
+    border: 1px solid #dee2e6;
+    padding: 0.25em 0.5em;
+}
+
+details.fulltext mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+}

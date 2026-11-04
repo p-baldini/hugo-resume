@@ -1,0 +1,22 @@
+{{- /*
+  llms-full.txt: the summary of llms.txt with each publication in full (llms/publication.md), for the
+  tools that read a single file. The headings of each publication move two levels down, below those of
+  the groups of publications.
+*/ -}}
+{{ partial "llms/intro.txt" . | strings.TrimSpace }}
+
+{{- range partial "llms/publications.html" . }}
+
+## {{ .title }}
+{{ range .pages }}
+{{ partial "llms/publication.md" . | replaceRE `(?m)^(#+) ` "##$1 " | strings.TrimSpace }}
+{{ end }}
+{{- end }}
+
+{{- with where site.RegularPages "Section" "contributions" }}
+
+## Software contributions
+{{ range . }}
+- [{{ .Title }}]({{ .Permalink }}): {{ .Params.short_description }} ({{ .Params.community }}).
+{{- end }}
+{{- end }}

@@ -1,0 +1,21 @@
+# Plain-text summary of the site and its publications for LLMs (https://llmstxt.org), and the same
+# summary with the full text of the publications. A site enables them by adding "llms" and "llmsfull"
+# to its home outputs.
+[outputFormats.llms]
+baseName = "llms"
+isPlainText = true
+mediaType = "text/plain"
+notAlternative = true
+
+[outputFormats.llmsfull]
+baseName = "llms-full"
+isPlainText = true
+mediaType = "text/plain"
+notAlternative = true
+
+# Hugo's own Markdown output format, published at the URL of the page followed by .md as llms.txt
+# proposes: index.html.md for pages published as folders. Publications provide it when "markdown" is
+# among their outputs (see layouts/publications/single.markdown.md).
+[outputFormats.markdown]
+baseName = "index.html"
+notAlternative = true

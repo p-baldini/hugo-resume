@@ -1,0 +1,14 @@
+{{- /* The beginning of llms.txt and llms-full.txt: who the site is about, and where to find them */ -}}
+# {{ site.Title }}
+
+> {{ site.Params.description }}
+
+{{ site.Home.RawContent | strings.TrimSpace }}
+
+Website: {{ site.Home.Permalink }}
+{{- range site.Params.handles }}
+{{ .name }}: {{ .link }}
+{{- end }}
+{{- range site.Params.sameAs }}
+Profile: {{ . }}
+{{- end }}

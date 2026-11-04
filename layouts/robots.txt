@@ -1,0 +1,5 @@
+# Every crawler, including the ones of search engines and AI assistants, may read the whole site
+User-agent: *
+Allow: /
+
+Sitemap: {{ "sitemap.xml" | absURL }}

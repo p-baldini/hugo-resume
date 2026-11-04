@@ -1,0 +1,69 @@
+<!-- Schema.org description of the site owner (homepage) and of each publication -->
+
+{{- $page := .page -}}
+{{- $publication := .publication -}}
+{{- $name := printf "%s %s" site.Params.firstName site.Params.lastName -}}
+{{- $personId := printf "%s#person" site.Home.Permalink -}}
+{{- $person := dict "@type" "Person" "@id" $personId "name" $name "url" site.Home.Permalink -}}
+{{- $schema := dict -}}
+
+{{- if $page.IsHome -}}
+    {{- $sameAs := slice -}}
+    {{- range site.Params.handles }}{{ $sameAs = $sameAs | append .link }}{{ end -}}
+    {{- range site.Params.sameAs }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+    {{- $owner := merge $person (dict
+        "givenName" site.Params.firstName
+        "familyName" site.Params.lastName
+        "image" (site.Params.profileImage | absURL)
+        "sameAs" $sameAs
+    ) -}}
+    {{- with site.Params.description }}{{ $owner = merge $owner (dict "description" .) }}{{ end -}}
+    {{- with site.Params.jobTitle }}{{ $owner = merge $owner (dict "jobTitle" .) }}{{ end -}}
+    {{- with site.Params.knowsAbout }}{{ $owner = merge $owner (dict "knowsAbout" .) }}{{ end -}}
+    {{- with site.Params.affiliation -}}
+        {{- $owner = merge $owner (dict "affiliation" (dict "@type" "CollegeOrUniversity" "name" .name "url" .url)) -}}
+    {{- end -}}
+    {{- $website := dict
+        "@type" "WebSite"
+        "@id" (printf "%s#website" site.Home.Permalink)
+        "url" site.Home.Permalink
+        "name" site.Title
+        "author" (dict "@id" $personId)
+    -}}
+    {{- $schema = dict "@context" "https://schema.org" "@graph" (slice $website $owner) -}}
+
+{{- else if and $page.IsPage (eq $page.Section "publications") -}}
+    {{- $class := $page.Params.class -}}
+    {{- $authors := slice -}}
+    {{- range $publication.authors -}}
+        {{- if eq . $name }}{{ $authors = $authors | append $person -}}
+        {{- else }}{{ $authors = $authors | append (dict "@type" "Person" "name" .) }}{{ end -}}
+    {{- end -}}
+    {{- $type := index (dict "jour" "ScholarlyArticle" "conf" "ScholarlyArticle" "pre-print" "ScholarlyArticle" "thesis" "thesis") $class | default "CreativeWork" -}}
+    {{- $schema = dict
+        "@context" "https://schema.org"
+        "@type" $type
+        "@id" (printf "%s#work" $page.Permalink)
+        "name" $page.Title
+        "url" $page.Permalink
+        "author" $authors
+        "datePublished" ($page.Date.Format "2006-01-02")
+    -}}
+    {{- with $publication.abstract }}{{ $schema = merge $schema (dict "abstract" .) }}{{ end -}}
+    {{- with $page.Params.venue -}}
+        {{- if in (slice "thesis" "Poster") $class -}}
+            {{- $schema = merge $schema (dict "sourceOrganization" (dict "@type" "CollegeOrUniversity" "name" ($publication.bib.school | default .))) -}}
+        {{- else -}}
+            {{- $schema = merge $schema (dict "isPartOf" (dict "@type" (cond (eq $class "jour") "Periodical" "CreativeWork") "name" .)) -}}
+        {{- end -}}
+    {{- end -}}
+    {{- with $publication.url }}{{ $schema = merge $schema (dict "sameAs" .) }}{{ end -}}
+    {{- with $publication.doi }}{{ $schema = merge $schema (dict "identifier" (dict "@type" "PropertyValue" "propertyID" "DOI" "value" .)) }}{{ end -}}
+    {{- with $publication.pdf }}{{ $schema = merge $schema (dict "encoding" (dict "@type" "MediaObject" "encodingFormat" "application/pdf" "contentUrl" .)) }}{{ end -}}
+    {{- with $publication.bib.publisher }}{{ $schema = merge $schema (dict "publisher" (dict "@type" "Organization" "name" .)) }}{{ end -}}
+    {{- with $page.Params.keywords }}{{ $schema = merge $schema (dict "keywords" (delimit . ", ")) }}{{ end -}}
+{{- end -}}
+
+{{- with $schema }}
+    <script type="application/ld+json">{{ . | jsonify | safeJS }}</script>
+{{- end -}}

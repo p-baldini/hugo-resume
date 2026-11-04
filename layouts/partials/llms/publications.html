@@ -1,0 +1,15 @@
+<!-- The publications of the site, by type of venue, newest first: a list of dicts with title and pages -->
+{{- $publications := where site.RegularPages "Section" "publications" -}}
+{{- $groups := slice -}}
+{{- range $group := slice
+  (dict "class" "jour" "title" "Journal articles")
+  (dict "class" "conf" "title" "Conference and workshop papers")
+  (dict "class" "pre-print" "title" "Preprints")
+  (dict "class" "thesis" "title" "Theses (authored and supervised)")
+  (dict "class" "Poster" "title" "Posters")
+-}}
+  {{- with where $publications "Params.class" $group.class -}}
+    {{- $groups = $groups | append (dict "title" $group.title "pages" .ByDate.Reverse) -}}
+  {{- end -}}
+{{- end -}}
+{{- return $groups -}}
