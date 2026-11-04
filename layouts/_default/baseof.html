@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>{{ .Site.Title }} | {{ .Title }}</title>
-
   <!-- Data of the template -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{else}}{{ .Description }}{{ end }}">
-  <meta name="author" content="{{ .Site.Params.firstName }} {{ .Site.Params.lastName }}">
   {{ hugo.Generator }}
 
-  <!-- Properties of the template -->
-  <meta property="og:title" content="{{ .Site.Title }} | {{ .Title }}" />
-  <meta property="og:image" content="{{ .Site.Params.profileImage | absURL }}" />
-  <meta property="og:description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{else}}{{ .Description }}{{ end }}" />
+  <!-- Title, description, social cards and metadata for search engines and LLMs -->
+  {{ partial "seo/head.html" . }}
 
   <!-- Custom fonts for this template -->
   <link rel="stylesheet" as="style" href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900&display=swap">
   <link rel="stylesheet" as="style" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap">
-  <link rel="stylesheet" as="style" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
+  <link rel="stylesheet" as="style" href="https://use.fontawesome.com/releases/v7.3.1/css/all.css">
   <link rel="stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous">
 
   <!-- Custom styles for this template -->
