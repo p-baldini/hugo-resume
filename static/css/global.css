@@ -18,10 +18,11 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     /* font style */
-    font-family:        'Saira Extra Condensed', serif;
+    font-family:        'Saira', serif;
     font-weight:        700;
     font-size-adjust:   cap-height 0.55;
     text-transform:     uppercase;
+    font-stretch:       75%;
     color:              var(--primary-color);
     margin:             0;
 }
@@ -39,7 +40,7 @@ h2 {
 }
 
 h3 {
-    font-weight:        550;
+    font-weight:        600;
     font-size:          1.5rem;
     margin:             0;
 }
@@ -48,7 +49,8 @@ h3 {
     /* font style */
     text-transform:     uppercase;
     font-weight:        500;
-    font-family:        'Saira Extra Condensed', serif;
+    font-family:        'Saira', serif;
     font-size:          1.35rem;
     margin-bottom:      1.5rem;
+    font-stretch:       75%;
 }
