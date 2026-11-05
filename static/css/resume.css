@@ -91,6 +91,10 @@ section {
     color:                  var(--secondary-color);
 }
 
+.entry-title {
+    font-weight:            550;
+}
+
 .columns {
     display:                flex;
     flex-direction:         column;
