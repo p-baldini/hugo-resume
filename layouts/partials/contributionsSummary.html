@@ -1,10 +1,17 @@
 <!-- Entry type for contributions in the list -->
 <div class="resume-item">
-  <div class="resume-item-publication">
-    <a class="entry-title" href="{{ .Permalink }}">{{ .Params.title }} <i class="fa-solid fa-link"></i></a>
-    <div>{{ .Params.short_description }}&nbsp;—&nbsp;{{ .Params.community }}</div>
-  </div>
-  <div class="resume-date">
-    <span class="text-primary">{{ .Params.date | dateFormat "January 2006" }}</span>
-  </div>
+    <div class="resume-item-publication">
+        <div class="entry-type">
+            {{ if eq .Params.class "tool" }}
+                    <div class="tool">{{ .Params.class }}</div>
+            {{ else if eq .Params.class "proj" }}
+                    <div class="proj">{{ .Params.class }}</div>
+            {{ end }}
+        </div>
+        <a class="entry-title" href="{{ .Permalink }}">{{ .Params.title }} <i class="fa-solid fa-link"></i></a>
+        <div>{{ .Params.short_description }}&nbsp;—&nbsp;{{ .Params.community }}</div>
+    </div>
+    <div class="resume-date">
+        <span class="text-primary">{{ .Params.date | dateFormat "January 2006" }}</span>
+    </div>
 </div>

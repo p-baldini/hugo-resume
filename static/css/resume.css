@@ -73,10 +73,10 @@ section {
         padding:            0px 3px 0px 3px;
         border-radius:      3px;
     }
-    .jour {
+    .jour, .tool {
         background-color:   #f8d7da;
     }
-    .conf {
+    .conf, .proj {
         background-color:   #d1e7dd;
     }
     .prep {
